@@ -17,7 +17,8 @@ function Ingredients() {
         const newImages = [...images]
         newImages.push({
             img: "",
-            name: ""
+            name: "",
+            amount: ""
         })
         setImages(newImages)
     }
@@ -33,9 +34,15 @@ function Ingredients() {
         setImages(newImages)
     }
 
+    const handleAmountAdd = (e, i) => {
+        const newImages = [...images]
+        newImages[i].amount = e
+        setImages(newImages)
+    }
+
   return (
-    <div >
-        <Grid container spacing={2} columns={12}>
+    <div>
+        <Grid container spacing={2} columns={12} padding={'1em'}>
             {images.map((element, index) => {
                 return(
                     <Grid item xs={12} sm={3} key={index}>
@@ -45,6 +52,7 @@ function Ingredients() {
                             </div>
                             <input type='text' value={element.name} onChange={e => handleNameAdd(e.target.value, index)} style={{border: 'none', fontSize: '24px', textAlign: 'center', backgroundColor: '#D9D9D9'}} placeholder='Enter Text Here'/>
                             <img src={element.img} alt='Drag in Ingredient image' />
+                            <input type='text' value={element.amount} onChange={e => handleAmountAdd(e.target.value, index)} style={{border: 'none', fontSize: '16px', textAlign: 'center', backgroundColor: '#D9D9D9'}} placeholder='Enter Amounts Needed'/>
                         </div>
                     </Grid>
                 )

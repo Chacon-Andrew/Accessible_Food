@@ -35,7 +35,7 @@ function Tools() {
 
   return (
     <div >
-        <Grid container spacing={2} columns={12}>
+        <Grid container spacing={2} columns={12} padding={'1em'}>
             {images.map((element, index) => {
                 return(
                     <Grid item xs={12} sm={3} key={index}>
@@ -44,7 +44,7 @@ function Tools() {
                                 <IconButton onClick={() => handleImageRemove(index)}><CloseIcon /></IconButton>
                             </div>
                             <input type='text' value={element.name} onChange={e => handleNameAdd(e.target.value, index)} style={{border: 'none', fontSize: '24px', textAlign: 'center', backgroundColor: '#D9D9D9'}} placeholder='Enter Text Here'/>
-                            <img src={element.img} alt='Drag in Ingredient image' />
+                            <img src={element.img} alt='Drag in Tool image' />
                         </div>
                     </Grid>
                 )
