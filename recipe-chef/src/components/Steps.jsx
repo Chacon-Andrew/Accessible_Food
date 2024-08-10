@@ -60,7 +60,7 @@ function Steps() {
                                     e.map((element, index) => {
                                         return(
                                             <Grid item xs={12} sm={4}>
-                                                <div onDragOver={e => e.preventDefault()} onDrop={e => handleImageDrop(e.dataTransfer.mozSourceNode.src, i, index)} style={{padding: '1em', backgroundColor: '#D9D9D9', display: 'flex', flexDirection: 'column', gap: '1em'}}>
+                                                <div onDragOver={e => e.preventDefault()} onDrop={e => handleImageDrop(e.dataTransfer.getData("text"), i, index)} style={{padding: '1em', backgroundColor: '#D9D9D9', display: 'flex', flexDirection: 'column', gap: '1em'}}>
                                                     <div style={{position: 'relative'}}>
                                                         <IconButton onClick={() => handleImageRemove(i, index)}><CloseIcon /></IconButton>
                                                     </div>
