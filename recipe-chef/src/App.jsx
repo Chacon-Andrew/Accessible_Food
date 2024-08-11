@@ -6,16 +6,18 @@ import Tools from './components/Tools'
 import Button from '@mui/material/Button';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
+import {browserName} from 'react-device-detect'
 
 function App() {
 
   const handleDownloadPDF = () => {
     const input = document.getElementById('pdf-content');
     const height = input.clientHeight
-    console.log(input) 
+    const width = input.clientWidth
+    console.log(browserName) 
     html2canvas(input, {useCORS: true}).then(function(canvas){
       const imgData = canvas.toDataURL('image/png')
-      const pdf = new jsPDF('p', 'mm', [height / 4, 228])
+      const pdf = new jsPDF('p', 'mm', browserName === 'Firefox' ? [height - 200, (width / 2) + 20] : [height / 4 + 20, width / 4 + 20])
       pdf.addImage(imgData, 'PNG', 0, 0)
       pdf.save('downloaded-recipe.pdf')
     })
@@ -23,8 +25,8 @@ function App() {
 
   return (
     <div style={{width: '100vw', height: '100vh', position: 'absolute', left: 0, top: 0, display: 'flex', flexDirection: 'row', gap: '1em'}}>
-      <div style={{display: 'flex', position: 'relative', marginTop: '2em', marginLeft: '1em', flexDirection: 'column', gap: '1em', width: "45%"}}>
-        <div style={{display: 'flex', flexDirection: 'column', gap: '1em'}} id='pdf-content'>
+      <div style={{display: 'flex', position: 'relative', marginTop: '2em', marginLeft: '1em', flexDirection: 'column', gap: '1em', width: "50%"}}>
+        <div style={{display: 'flex', flexDirection: 'column', gap: '1em', marginRight: '1em'}} id='pdf-content'>
           <Title />
           <div className='recipeBanner'>Ingredients Needed</div>
           <Ingredients />
@@ -35,7 +37,7 @@ function App() {
         </div>
         <Button variant='contained' onClick={handleDownloadPDF}>Download PDF</Button>
       </div>
-      <div style={{position: 'relative', width: '50%', marginRight: '1em', overflowX: 'hidden'}}>
+      <div style={{position: 'fixed', width: '50%', height: '100%', right: 0, marginRight: '1em', overflowX: 'hidden'}}>
         <div className="gcse-searchbox" data-enableimagesearch={true} data-defaulttoimagesearch={true} data-disablewebsearch={true}></div>
         <div className="gcse-searchresults" data-enableimagesearch={true} data-defaulttoimagesearch={true} data-disablewebsearch={true}></div>
       </div>

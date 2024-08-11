@@ -54,24 +54,24 @@ function Steps() {
                 steps.map((e, i) => {
                     return(
                         <Grid item container flexDirection={'row'} columns={12}>
-                            <Grid item sm={1}><h1>{i + 1}</h1></Grid>
-                            <Grid container item sm={12} columns={15} alignItems={'center'} spacing={4}>
+                            <div style={{marginRight: '1em'}}><h1>{i + 1}</h1></div>
+                            <Grid container item sm={12} columns={15} alignItems={'center'} spacing={2}>
                                 {
                                     e.map((element, index) => {
                                         return(
-                                            <Grid item xs={12} sm={4}>
-                                                <div onDragOver={e => e.preventDefault()} onDrop={e => handleImageDrop(e.dataTransfer.getData("text"), i, index)} style={{padding: '1em', backgroundColor: '#D9D9D9', display: 'flex', flexDirection: 'column', gap: '1em'}}>
+                                            <Grid item xs={15} sm={5}>
+                                                <div onDragOver={e => e.preventDefault()} onDrop={e => handleImageDrop(e.dataTransfer.getData("text"), i, index)} style={{padding: '1em', backgroundColor: '#D9D9D9', display: 'flex', flexDirection: 'column', gap: '1em', height: '20em'}}>
                                                     <div style={{position: 'relative'}}>
                                                         <IconButton onClick={() => handleImageRemove(i, index)}><CloseIcon /></IconButton>
                                                     </div>
-                                                    <TextField type='text' multiline value={element.name} onChange={e => handleNameAdd(e.target.value, i, index)} style={{border: 'none', fontSize: '24px', textAlign: 'center', backgroundColor: '#D9D9D9', textWrap: 'nowrap', height: '100%'}} placeholder='Enter Text Here'/>
+                                                    <TextField type='text' multiline rows={3} value={element.name} onChange={e => handleNameAdd(e.target.value, i, index)} style={{border: 'none', fontSize: '24px', textAlign: 'center', backgroundColor: '#D9D9D9', textWrap: 'nowrap', height: '100%'}} placeholder='Enter Text Here'/>
                                                     <img src={element.img} alt='Drag in Step image' />
                                                 </div>
                                             </Grid>
                                         )
                                     })
                                 }
-                                <Grid item xs={12} sm={4}>
+                                <Grid item xs={12} sm={5}>
                                     <IconButton onClick={() => handleImageAdd(i)}><AddIcon /></IconButton>
                                 </Grid>
                             </Grid>
