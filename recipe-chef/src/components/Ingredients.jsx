@@ -46,13 +46,13 @@ function Ingredients() {
         <Grid container spacing={2} columns={12} padding={'1em'}>
             {images.map((element, index) => {
                 return(
-                    <Grid item xs={12} sm={4} key={index}>
-                        <div onDragOver={e => e.preventDefault()} onDrop={e => handleImageDrop(e.dataTransfer.getData("text"), index)} style={{padding: '1em', backgroundColor: '#D9D9D9', display: 'flex', flexDirection: 'column', gap: '1em', height: '24em'}}>
-                            <div style={{position: 'relative'}}>
+                    <Grid item xs={12} sm={3} key={index}>
+                        <div onDragOver={e => e.preventDefault()} onDrop={e => handleImageDrop(e.dataTransfer.getData("text"), index)} style={{padding: '1em', backgroundColor: '#D9D9D9', display: 'flex', flexDirection: 'column', gap: '1em'}}>
+                            <div style={{position: 'relative', left: 0}}>
                                 <IconButton onClick={() => handleImageRemove(index)}><CloseIcon /></IconButton>
                             </div>
                             <TextField type='text' multiline rows={3} value={element.name} onChange={e => handleNameAdd(e.target.value, index)} style={{fontSize: '24px', backgroundColor: '#D9D9D9', height: '100%', width: '100%'}} placeholder='Enter Text Here'/>
-                            <img src={element.img} alt='Drag in Ingredient image' />
+                            <img src={element.img} alt='Drag in Ingredient image' style={{width: '95%', height: '200px'}}/>
                             <input type='text' value={element.amount} onChange={e => handleAmountAdd(e.target.value, index)} style={{border: 'none', fontSize: '16px', textAlign: 'center', backgroundColor: '#D9D9D9'}} placeholder='Enter Amounts Needed'/>
                         </div>
                     </Grid>

@@ -60,12 +60,12 @@ function Steps() {
                                     e.map((element, index) => {
                                         return(
                                             <Grid item xs={15} sm={5}>
-                                                <div onDragOver={e => e.preventDefault()} onDrop={e => handleImageDrop(e.dataTransfer.getData("text"), i, index)} style={{padding: '1em', backgroundColor: '#D9D9D9', display: 'flex', flexDirection: 'column', gap: '1em', height: '20em'}}>
+                                                <div onDragOver={e => e.preventDefault()} onDrop={e => handleImageDrop(e.dataTransfer.getData("text"), i, index)} style={{padding: '1em', backgroundColor: '#D9D9D9', display: 'flex', flexDirection: 'column', gap: '1em'}}>
                                                     <div style={{position: 'relative'}}>
                                                         <IconButton onClick={() => handleImageRemove(i, index)}><CloseIcon /></IconButton>
                                                     </div>
                                                     <TextField type='text' multiline rows={3} value={element.name} onChange={e => handleNameAdd(e.target.value, i, index)} style={{border: 'none', fontSize: '24px', textAlign: 'center', backgroundColor: '#D9D9D9', textWrap: 'nowrap', height: '100%'}} placeholder='Enter Text Here'/>
-                                                    <img src={element.img} alt='Drag in Step image' />
+                                                    <img src={element.img} alt='Drag in Step image' style={{width: '95%', height: '200px'}}/>
                                                 </div>
                                             </Grid>
                                         )

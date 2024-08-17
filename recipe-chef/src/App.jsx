@@ -17,7 +17,7 @@ function App() {
     console.log(browserName) 
     html2canvas(input, {useCORS: true}).then(function(canvas){
       const imgData = canvas.toDataURL('image/png')
-      const pdf = new jsPDF('p', 'mm', browserName === 'Firefox' ? [height - 200, (width / 2) + 20] : [height / 4 + 20, width / 4 + 20])
+      const pdf = new jsPDF('p', 'mm', browserName === 'Firefox' ? [height / 2, width / 4 + 20] : [height / 4 + 100, width / 4 + 20])
       pdf.addImage(imgData, 'PNG', 0, 0)
       pdf.save('downloaded-recipe.pdf')
     })
